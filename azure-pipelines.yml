@@ -17,3 +17,15 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Kehari'
+    subscriptionId: 'e8f789fe-e545-4fdd-bfd2-f38cb5d5c73d'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'RG'
+    location: 'Central India'
+    templateLocation: 'Linked artifact'
+    csmFile: 'quickstarts/microsoft.compute/vm-simple-rhel/azuredeploy.json'
+    csmParametersFile: 'quickstarts/microsoft.compute/vm-simple-rhel/azuredeploy.parameters.json'
+    deploymentMode: 'Complete'
